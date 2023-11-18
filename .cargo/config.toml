@@ -1,0 +1,3 @@
+[build]
+rustflags = ["--crate-type=lib", "--emit=llvm-ir"]        # custom flags to pass to all compiler invocations
+target = ["wasm32-unknown-unknown"]

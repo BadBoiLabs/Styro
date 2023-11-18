@@ -1,0 +1,11 @@
+[package]
+name = "styro"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "styro"
+crate-type = ["staticlib"]
+
+[dependencies]
+cairo-felt = "0.9.1"
