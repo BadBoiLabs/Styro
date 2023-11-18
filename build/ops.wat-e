@@ -1,12 +1,14 @@
 (module
   (type (;0;) (func (param i32)))
-  (type (;1;) (func (param i32 i32)))
-  (type (;2;) (func (param i32 i32 i32)))
-  (type (;3;) (func (param i32 i32 i32 i32 i32 i32 i64 i64 i64 i64)))
-  (type (;4;) (func (param i32 i64) (result i32)))
-  (type (;5;) (func))
-  (import "vm_hooks" "memory_grow" (func $libstyro::stylus::memory_grow::hd6a179970060eb2e (type 0)))
-  (func $ops::ops::user_entrypoint (type 1) (param i32 i32)
+  (type (;1;) (func))
+  (type (;2;) (func (param i32 i32)))
+  (type (;3;) (func (param i32 i32 i32)))
+  (type (;4;) (func (param i32 i32 i32 i32 i32 i32 i64 i64 i64 i64)))
+  (type (;5;) (func (param i32 i64) (result i32)))
+  (import "env" "puts" (func $puts (type 0)))
+  (import "env" "abort" (func $abort (type 1)))
+  (import "vm_hooks" "memory_grow" (func $libstyro::stylus::memory_grow::h74ae98ccf3617dd5 (type 0)))
+  (func $ops::ops::user_entrypoint (type 2) (param i32 i32)
     (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
     global.get $__stack_pointer
     local.set 2
@@ -332,7 +334,7 @@
     call $puts
     call $abort
     unreachable)
-  (func $core::integer::U32Add::add (type 2) (param i32 i32 i32)
+  (func $core::integer::U32Add::add (type 3) (param i32 i32 i32)
     (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64 i64 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
     global.get $__stack_pointer
     local.set 3
@@ -713,7 +715,7 @@
     call $puts
     call $abort
     unreachable)
-  (func $core::result::ResultTraitImpl::<core::integer::u32__core::integer::u32>::expect::<core::integer::u32Drop> (type 3) (param i32 i32 i32 i32 i32 i32 i64 i64 i64 i64)
+  (func $core::result::ResultTraitImpl::<core::integer::u32__core::integer::u32>::expect::<core::integer::u32Drop> (type 4) (param i32 i32 i32 i32 i32 i32 i64 i64 i64 i64)
     (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i32 i32 i32 i32 i64 i64 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
     global.get $__stack_pointer
     local.set 10
@@ -1027,7 +1029,7 @@
     i32.and
     local.set 5
     local.get 5
-    call $libstyro::stylus::memory_grow::hd6a179970060eb2e
+    call $libstyro::stylus::memory_grow::h74ae98ccf3617dd5
     i32.const 16
     local.set 6
     local.get 3
@@ -1037,7 +1039,7 @@
     local.get 7
     global.set $__stack_pointer
     return)
-  (func $realloc (type 4) (param i32 i64) (result i32)
+  (func $realloc (type 5) (param i32 i64) (result i32)
     (local i32 i32 i32 i32)
     global.get $__stack_pointer
     local.set 2
@@ -1056,22 +1058,6 @@
     i32.const 0
     local.set 5
     local.get 5
-    return)
-  (func $puts (type 0) (param i32)
-    (local i32 i32 i32)
-    global.get $__stack_pointer
-    local.set 1
-    i32.const 16
-    local.set 2
-    local.get 1
-    local.get 2
-    i32.sub
-    local.set 3
-    local.get 3
-    local.get 0
-    i32.store offset=12
-    return)
-  (func $abort (type 5)
     return)
   (memory (;0;) 2)
   (global $__stack_pointer (mut i32) (i32.const 66656))
