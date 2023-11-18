@@ -21,7 +21,7 @@ cairo2wat cairofile:
     "$MLIR_SYS_170_PREFIX"/bin/mlir-translate --mlir-to-llvmir $filename.mlir -o $filename.ll
 
     # build and link!
-    "$MLIR_SYS_170_PREFIX"/bin/clang $filename.ll ../Styro/styro.ll -Wno-override-module --target=wasm32-freestanding -o $filename.wasm -nostdlib -L "$MLIR_SYS_170_PREFIX"/lib -Wl,--no-entry -Wl,--export=stylus::stylus::user_entrypoint -Wl,--export=call_memory_grow -Wl,--allow-undefined
+    "$MLIR_SYS_170_PREFIX"/bin/clang $filename.ll ./target/wasm32-unknown-unknown/debug/deps/libstyro.ll -Wno-override-module --target=wasm32-freestanding -o $filename.wasm -nostdlib -L "$MLIR_SYS_170_PREFIX"/lib -Wl,--no-entry -Wl,--export=$filename::$filename::user_entrypoint -Wl,--export=call_memory_grow -Wl,--allow-undefined
 
     # convert to WAT
     wasm2wat $filename.wasm -o $filename.wat
