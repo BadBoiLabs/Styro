@@ -1,4 +1,3 @@
-use cairo_felt::Felt252;
 
 use crate::stylus::log_txt;
 
@@ -13,16 +12,11 @@ use crate::stylus::log_txt;
 #[no_mangle]
 pub unsafe extern "C" fn cairo_native__libfunc__debug__print(
     _target_fd: i32,
-    data: *const [u8; 32],
-    len: usize,
+    _data: *const [u8; 32],
+    _len: usize,
 ) -> i32 {
-    for i in 0..len {
-        let mut data = *data.add(i);
-        data.reverse();
-        let value = Felt252::from_bytes_be(&data);
-        let string = format!("[DEBUG]\t{:<31}\t(raw: {})", ' ', value.to_bigint());
-        log_txt(string.as_ptr(), string.len())
-    }
+    let string = "Hello, world!\n";
+    log_txt(string.as_ptr(), string.len());
     0
 }
 
