@@ -19,9 +19,3 @@ pub unsafe extern "C" fn cairo_native__libfunc__debug__print(
     log_txt(string.as_ptr(), string.len());
     0
 }
-
-
-#[no_mangle]
-pub unsafe extern "C" fn realloc(_ptr: i32, _size: i64) -> i32 {
-    0
-}

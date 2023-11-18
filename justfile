@@ -26,6 +26,12 @@ cairo2wat cairofile:
     # convert to WAT
     wasm2wat $filename.wasm -o $filename.wat
 
+    # rename the user_entrypoint function to the form expected by Stylus
+    sed -i -e "s/${filename}::${filename}::user_entrypoint/user_entrypoint/g" $filename.wat
+
+    # check it is correct
+    cargo stylus check --wasm-file-path=$filename.wat
+
 zig2wat zigfile:
   #!/usr/bin/env bash
   set -euxo pipefail
@@ -34,5 +40,8 @@ zig2wat zigfile:
   zig build-lib $1 -target wasm32-freestanding -dynamic --export=user_entrypoint -OReleaseSmall --export=mark_unused
   wasm2wat $filename.wasm -o $filename.wat
 
+check watfile:
+  cargo stylus check --wasm-file-path=$1
+
 build:
-  rustc --crate-type=lib --emit=llvm-ir --target wasm32-unknown-unknown ./src/lib.rs -o styro.ll
+  cargo clean && cargo build
